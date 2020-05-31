@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.javaguides.todoapp.dao.TodoDao;
 import net.javaguides.todoapp.dao.TodoDaoImpl;
+import net.javaguides.todoapp.model.LoginBean;
 import net.javaguides.todoapp.model.Todo;
 
 @WebServlet("/")
@@ -85,6 +86,13 @@ private void updateTodo(HttpServletRequest request, HttpServletResponse response
 	String description = request.getParameter("description");
 	String username = request.getParameter("username");
 	
+     LoginBean loginbean = (LoginBean)request.getSession().getAttribute("currentSessionUser");
+	
+	System.out.println("usename is fdfdfdfd fdfdf "+loginbean.getUsername());
+	System.out.println("value of user is");
+	System.out.println(request.getParameter("myhiddenvalue"));
+	username = loginbean.getUsername();
+	
 	LocalDate targetDate = LocalDate.parse(request.getParameter("targetDate"));
 	boolean isDone = Boolean.valueOf(request.getParameter("isDone"));
 	
@@ -103,7 +111,8 @@ private void listTodo(HttpServletRequest request, HttpServletResponse response)
 	
 	
 	System.out.println(request.getParameter("username"));
-	List<Todo> listTodo = todoDAO.selectAllTodos();
+	List<Todo> listTodo = todoDAO.selectAllTodos((LoginBean)request.getSession().getAttribute("currentSessionUser"));
+	
 	System.out.println("in the list");
 	request.setAttribute("listTodo", listTodo);
 	RequestDispatcher dispatcher = request.getRequestDispatcher("todo/todo-list.jsp");
@@ -151,9 +160,12 @@ private void insertTodo(HttpServletRequest request, HttpServletResponse response
 	String username = request.getParameter("userName");
 	Boolean isDone = Boolean.valueOf(request.getParameter("idDone"));
 	
+	LoginBean loginbean = (LoginBean)request.getSession().getAttribute("currentSessionUser");
 	
+	System.out.println("usename is fdfdfdfd fdfdf "+loginbean.getUsername());
 	System.out.println("value of user is");
 	System.out.println(request.getParameter("myhiddenvalue"));
+	username = loginbean.getUsername();
 	LocalDate targetDate = LocalDate.parse(request.getParameter("targetDate"));
 	
 	

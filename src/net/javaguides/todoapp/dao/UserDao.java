@@ -26,7 +26,7 @@ public class UserDao {
 
 			System.out.println(preparedStatement);
 			// Step 3: Execute the query or update query
-			result = preparedStatement.executeUpdate();
+			result = preparedStatement.executeUpdate();	
 
 		} catch (SQLException e) {
 			System.out.println("in the userdao erro function");

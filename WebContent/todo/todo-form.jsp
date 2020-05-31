@@ -28,6 +28,9 @@
    </ul>
 
    <ul class="navbar-nav navbar-collapse justify-content-end">
+    <div class="alert alert-success center" role="alert">
+				<p>${userispeesu}</p>
+			</div>
     <li><a href="<%=request.getContextPath()%>/logout"
      class="nav-link">Logout</a></li>
    </ul>
@@ -36,8 +39,7 @@
  
  </header>
  
- <h1>Here is the notification</h1>
-  <p>${NOTIFICATION}</p>
+ 
  <div class="container col-md-5">
   <div class="card">
    <div class="card-body">

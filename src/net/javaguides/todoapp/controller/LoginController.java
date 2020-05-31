@@ -63,7 +63,9 @@ public class LoginController extends HttpServlet {
 		
 		if(loginDao.validate(loginBean))
 		{
+			HttpSession session = request.getSession(true);	
 			request.setAttribute("userispeesu", loginBean.getUsername());
+			session.setAttribute("currentSessionUser", loginBean);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("todo/todo-list.jsp");
 			try {
@@ -78,7 +80,7 @@ public class LoginController extends HttpServlet {
 		}
 		else
 		{
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(false);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("register/register.jsp");
 			dispatcher.forward(request,response);
 		}

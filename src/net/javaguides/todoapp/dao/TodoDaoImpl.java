@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.javaguides.todoapp.model.LoginBean;
 import net.javaguides.todoapp.model.Todo;
 import net.javaguides.todoapp.utils.JDBCUtils;
 
@@ -21,7 +22,7 @@ public class TodoDaoImpl implements TodoDao{
 	
 	private String SELECT_TODO_BY_ID = "select id,title,username,description,target_date,is_done from todos where id = ?;";
 	
-	private String SELECT_ALL_TODOS = "select * from todos;";
+	private String SELECT_ALL_TODOS = "select * from todos where username=?";
 	
 	private String DELETE_TODO_BY_ID = "delete from todos where id = ?;";
 	
@@ -42,6 +43,7 @@ public class TodoDaoImpl implements TodoDao{
             preparedStatement.setString(3, todo.getDescription());
             preparedStatement.setDate(4, JDBCUtils.getSQLDate(todo.getTargetDate()));
             preparedStatement.setBoolean(5, todo.getStatus());
+            System.out.println("checking the status");
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException exception) {
@@ -88,7 +90,7 @@ public class TodoDaoImpl implements TodoDao{
 	}
 
 	@Override
-	public List<Todo> selectAllTodos() {
+	public List<Todo> selectAllTodos(LoginBean login) {
 		
 		
 		
@@ -96,6 +98,7 @@ public class TodoDaoImpl implements TodoDao{
 		
 		try(Connection conn = JDBCUtils.getConnection();PreparedStatement preparedStatement = conn.prepareStatement(SELECT_ALL_TODOS);){
 			
+			preparedStatement.setString(1,login.getUsername());
 			System.out.println(SELECT_ALL_TODOS);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {

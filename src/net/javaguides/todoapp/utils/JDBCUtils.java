@@ -1,10 +1,22 @@
 package net.javaguides.todoapp.utils;
 
+
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
+
+import org.bson.Document;
+
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 
 public class JDBCUtils {
 
@@ -13,6 +25,28 @@ public class JDBCUtils {
 	private static String jdbcPassword = "peesu";
 
 	public static Connection getConnection() {
+		
+		
+		MongoClient mongo = new MongoClient("localhost");
+		
+		
+		MongoDatabase db = mongo.getDatabase("search-bar-blog");
+		
+		MongoCollection<Document> col = db.getCollection("posts");
+		
+		
+		FindIterable<Document> fi = col.find();
+        MongoCursor<Document> cursor = fi.iterator();
+        try {
+            while(cursor.hasNext()) {
+                System.out.println(cursor.next().toJson());
+            }
+        } finally {
+            cursor.close();
+        }
+		
+		
+		
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

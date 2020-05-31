@@ -5,12 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 </head>
 <body>
         
         <h1>Register Form</h1>
         
-       
+            <div class="alert alert-success center" role="alert">
+				<p>${NOTIFICATION}</p>
+			</div>
+			
 
               
                     
@@ -20,14 +27,14 @@
                     
                     <div class="form-group">
                     
-                    <label for="uname">FirstName</label><input type="text" class="form-control" id="uname" placeholder="firstName" name="firstName" required>
+                    <label for="uname">FirstName</label><input type="text" class="form-control" id="fname" placeholder="firstName" name="firstName" required>
                     
                     </div>
                     
                     
                     <div class="form-group">
                     
-                    <label for="uname">LastName</label><input type="text" class="form-control" id="uname" placeholder="lastName" name="lastName" required>
+                    <label for="uname">LastName</label><input type="text" class="form-control" id="lname" placeholder="lastName" name="lastName" required>
                     
                     </div>
                     
@@ -40,7 +47,7 @@
                     
                     <div class="form-group">
                     
-                    <label for="uname">Password</label><input type="password" class="form-control" id="uname" placeholder="password" name="password" required>
+                    <label for="uname">Password</label><input type="password" class="form-control" id="password" placeholder="password" name="password" required>
                     
                     </div>
                     

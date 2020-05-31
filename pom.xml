@@ -17,18 +17,75 @@
             <version>3.1.0</version> 
             <scope>provided</scope>
         </dependency>
+        
+     
+     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+
+     
+        
+     
+      <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-core -->
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>mongodb-driver-core</artifactId>
+    <version>3.0.1</version>
+     
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>mongo-java-driver</artifactId>
+    <version>3.0.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.mongodb/bson -->
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>bson</artifactId>
+    <version>3.0.1</version>
+</dependency>
+
+
+      
     
     </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
+    
+    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+                <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>${project.build.directory}/WebContent/WEB-INF/lib</outputDirectory>
+                <overWriteReleases>false</overWriteReleases>
+                <overWriteSnapshots>false</overWriteSnapshots>
+                <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+    
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
           <release>11</release>
         </configuration>
+        <goals>
+                <goal>install-file</goal>
+            </goals>
       </plugin>
+      
+      
+      
     </plugins>
    
  

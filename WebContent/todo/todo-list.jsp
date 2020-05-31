@@ -20,7 +20,7 @@
     <a href="https://www.javaguides.net" class="navbar-brand"> Todo
      App</a>
    </div>
-
+    
    <ul class="navbar-nav">
     <li><a href="<%=request.getContextPath()%>/list"
      class="nav-link">Todos</a></li>
@@ -32,10 +32,14 @@
    </ul>
   </nav>
  </header>
+ 
+ 
+       
 
  <div class="row">
-  <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
-
+  		
+  		
+  		
   <div class="container">
    <h3 class="text-center">List of Todos</h3>
    <hr>

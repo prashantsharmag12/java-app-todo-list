@@ -53,9 +53,20 @@ public class UserController extends HttpServlet {
 		try {
 			int result = userDao.registerEmployee(employee);
 			System.out.println("result is "+ result);
+		
+			if(result == 1)
+			{
 			request.setAttribute("NOTIFICATION", "User Registered Successfully!");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
 			dispatcher.forward(request, response);
+			}
+			else
+			{
+				request.setAttribute("NOTIFICATION", "User Not Registered!");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("register/register.jsp");
+				dispatcher.forward(request, response);
+				
+			}
 			
 			
 		} catch (Exception e) {
