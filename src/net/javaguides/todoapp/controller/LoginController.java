@@ -61,7 +61,7 @@ public class LoginController extends HttpServlet {
 		loginBean.setPassword(password);
 		loginBean.setUsername(username);
 		
-		if(loginDao.validate(loginBean) && loginDao.validateMongo(loginBean))
+		if(loginDao.validateMongo(loginBean))
 		{
 			HttpSession session = request.getSession(true);	
 			request.setAttribute("userispeesu", loginBean.getUsername());

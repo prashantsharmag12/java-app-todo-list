@@ -9,11 +9,18 @@ public interface TodoDao {
 	
 	
 	
-	void insertTodo(Todo todo);
+	/*void insertTodo(Todo todo);
 	Todo selectTodo(long id);
 	List<Todo> selectAllTodos(LoginBean login);
 	boolean deleteTodo(long id);
-	boolean updateTodo(Todo todo);
+	boolean updateTodo(Todo todo);*/
+	
+	void insertTodoMongo(Todo newTodo);
+	Todo selectTodoMongo(String id);
+	List<Todo> selectAllTodosMongo(LoginBean login);
+	boolean deleteTodoMongo(String id);
+	boolean updateTodoMongo(Todo todo);
+	
 	
 
 }

@@ -6,18 +6,18 @@ import java.time.LocalDate;
 
 public class Todo {
 
-    private Long id;
+    private String id;
     private String title;
     private String username;
     private String description;
-    private LocalDate targetDate;
+    private String targetDate;
     private boolean status;
 
     protected Todo() {
 
     }
 
-    public Todo(long id, String title, String username, String description, LocalDate targetDate, boolean isDone) {
+    public Todo(String id, String title, String username, String description, String targetDate, boolean isDone) {
         super();
         this.id = id;
         this.title = title;
@@ -27,7 +27,7 @@ public class Todo {
         this.status = isDone;
     }
 
-    public Todo(String title, String username, String description, LocalDate targetDate, boolean isDone) {
+    public Todo(String title, String username, String description, String targetDate, boolean isDone) {
         super();
         this.title = title;
         this.username = username;
@@ -36,11 +36,11 @@ public class Todo {
         this.status = isDone;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -68,11 +68,11 @@ public class Todo {
         this.description = description;
     }
 
-    public LocalDate getTargetDate() {
+    public String getTargetDate() {
         return targetDate;
     }
 
-    public void setTargetDate(LocalDate targetDate) {
+    public void setTargetDate(String targetDate) {
         this.targetDate = targetDate;
     }
 
@@ -84,13 +84,13 @@ public class Todo {
         this.status = status;
     }
 
-    @Override
-    public int hashCode() {
+   
+    /*public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + (int)(id ^ (id >>> 32));
         return result;
-    }
+    }*/
 
     @Override
     public boolean equals(Object obj) {

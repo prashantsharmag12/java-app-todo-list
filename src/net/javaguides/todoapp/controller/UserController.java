@@ -52,8 +52,8 @@ public class UserController extends HttpServlet {
 
 		try {
 			
-			int result = userDao.registerEmployee(employee);
-			System.out.println("result is "+ result);
+			//int result = userDao.registerEmployee(employee);
+			//System.out.println("result is "+ result);
 			
 			System.out.println("before callong mongo db");
 			
@@ -62,7 +62,7 @@ public class UserController extends HttpServlet {
 			System.out.println("unreachable point");
 			
 		
-			if(result == 1 && ans==1)
+			if(ans==1)
 			{
 			request.setAttribute("NOTIFICATION", "User Registered Successfully!");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("register/register.jsp");
