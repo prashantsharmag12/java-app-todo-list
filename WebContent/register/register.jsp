@@ -58,7 +58,20 @@
                     
                     
                     </form>
-
+                    
+                    
+                    <div class="container col-md-8 col-md-offset-3">
+    
+           <button id="myButton" class="float-left submit-button" >Already  registered?</button>
+    
+    
+                  </div>
+    
+            <script type="text/javascript">
+         document.getElementById("myButton").onclick = function () {
+            location.href = "<%=request.getContextPath()%>/login/login.jsp";
+          };
+			</script>
         
         
         

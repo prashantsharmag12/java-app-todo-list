@@ -61,7 +61,7 @@ public class LoginController extends HttpServlet {
 		loginBean.setPassword(password);
 		loginBean.setUsername(username);
 		
-		if(loginDao.validate(loginBean))
+		if(loginDao.validate(loginBean) && loginDao.validateMongo(loginBean))
 		{
 			HttpSession session = request.getSession(true);	
 			request.setAttribute("userispeesu", loginBean.getUsername());
@@ -80,8 +80,9 @@ public class LoginController extends HttpServlet {
 		}
 		else
 		{
+			request.setAttribute("NOTIFICATION_From_login", "Wrong username or password");
 			HttpSession session = request.getSession(false);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("register/register.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
 			dispatcher.forward(request,response);
 		}
 		

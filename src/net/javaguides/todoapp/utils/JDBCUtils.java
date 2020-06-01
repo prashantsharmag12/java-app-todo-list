@@ -84,4 +84,11 @@ public class JDBCUtils {
 	public static LocalDate getUtilDate(Date sqlDate) {
 		return sqlDate.toLocalDate();
 	}
+	
+	public static MongoClient mongodbms()
+	{
+		MongoClient mongo = new MongoClient();
+		return mongo;
+	}
+	
 }

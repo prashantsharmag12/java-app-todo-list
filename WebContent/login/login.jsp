@@ -13,6 +13,11 @@
 </head>
 <body>
 
+
+ <div class="alert alert-success center" role="alert">
+				<p>${NOTIFICATION_From_login}</p>
+			</div>
+
 <h2>Login Page</h2>
 
 	<div class="container col-md-8 col-md-offset-3" style="overflow: auto">

@@ -51,13 +51,21 @@ public class UserController extends HttpServlet {
 		employee.setPassword(password);
 
 		try {
+			
 			int result = userDao.registerEmployee(employee);
 			System.out.println("result is "+ result);
+			
+			System.out.println("before callong mongo db");
+			
+			int ans = userDao.registerEmployeeMongo(employee);
+			
+			System.out.println("unreachable point");
+			
 		
-			if(result == 1)
+			if(result == 1 && ans==1)
 			{
 			request.setAttribute("NOTIFICATION", "User Registered Successfully!");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("register/register.jsp");
 			dispatcher.forward(request, response);
 			}
 			else
@@ -73,7 +81,7 @@ public class UserController extends HttpServlet {
 			System.out.println("not able to connect in the post");
 			e.printStackTrace();
 		}
-
+		request.setAttribute("NOTIFICATION", "User Not Registered!");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("register/register.jsp");
 		dispatcher.forward(request, response);
 	}

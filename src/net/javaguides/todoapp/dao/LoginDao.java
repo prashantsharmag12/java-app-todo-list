@@ -6,6 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.bson.Document;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+
 import net.javaguides.todoapp.model.LoginBean;
 import net.javaguides.todoapp.utils.JDBCUtils;
 
@@ -38,6 +47,40 @@ public class LoginDao {
 			JDBCUtils.printSQLException(e);
 		}
 		return status;
+	}
+
+	public boolean validateMongo(LoginBean loginBean) {
+		
+		
+		
+		MongoClient mongo = JDBCUtils.mongodbms();
+		
+		MongoDatabase db = mongo.getDatabase("todo");
+		
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("username", loginBean.getUsername());
+		whereQuery.put("password", loginBean.getPassword());
+		
+        MongoCollection<Document> col = db.getCollection("users");
+		
+		
+		FindIterable<Document> fi = col.find(whereQuery);
+        MongoCursor<Document> cursor = fi.iterator();
+        
+        if(cursor.hasNext())
+        {
+        	System.out.println(whereQuery);
+        	System.out.println("in the hasNest fucntion ");
+        	System.out.println(cursor.next().toJson());
+        	return true;
+        }
+        
+        
+		
+		
+		
+		
+		return false;
 	}
 	
 	

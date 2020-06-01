@@ -3,7 +3,6 @@
   <groupId>todo-app</groupId>
   <artifactId>todo-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
   <dependencies>
    <dependency>
         <groupId>mysql</groupId>
@@ -11,7 +10,7 @@
         <version>5.1.46</version>
     </dependency>
      
-     <dependency>
+     <dependency>	
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version> 
@@ -56,6 +55,7 @@
     <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-dependency-plugin</artifactId>
+   
     <executions>
         <execution>
             <id>copy-dependencies</id>
@@ -68,7 +68,9 @@
                 <overWriteReleases>false</overWriteReleases>
                 <overWriteSnapshots>false</overWriteSnapshots>
                 <overWriteIfNewer>true</overWriteIfNewer>
+              
             </configuration>
+           
         </execution>
     </executions>
 </plugin>
